@@ -1,24 +1,42 @@
 package main_package;
-import java.util.Scanner;
 
 public class Board {
-    Scanner scanner = new Scanner(System.in);
-    private final int n;
+    public static Pawn[][] initBoard(int boardSize){
+        Pawn[][] board = new Pawn[boardSize][boardSize];
+        int firstBottomRow = board.length - 1;
+        int secondBottomRow = firstBottomRow - 1;
+        int thirdBottomRow = secondBottomRow - 1;
+        int fourthBottomRow = thirdBottomRow - 1;
 
-    public Board() {
-        this.n = scanner.nextInt();
-    }
+        for (int i = 0; i < board.length; i++){
+            for (int j = 0; j < board.length; j++){
+                if (i == 0){
+                    board[i][j] = (j % 2 == 0 ? new Pawn(j, i, "black") : null);
+                }
+                else if (i == 1){
+                    board[i][j] = (j % 2 != 0 ? new Pawn(j, i, "black") : null);
+                }
+                else if (i == 2){
+                    board[i][j] = (j % 2 == 0 ? new Pawn(j, i, "black") : null);
+                }
+                else if (i == 3){
+                    board[i][j] = (j % 2 != 0 ? new Pawn(j, i, "black") : null);
+                }
 
-    private void spawnPawns(){
-        int[][] pawn = new int[n][n];
-        int pawnNumber = n * 2;
-        int initialPawnRows = 4;
-        for (int i = 0; i < initialPawnRows; i++){
-            for (int j = 0; j < n; j = j+2){
-                pawn[i][j] = 5;
+                else if (i == fourthBottomRow){
+                    board[i][j] = (j % 2 == 0 ? new Pawn(j, i, "white") : null);
+                }
+                else if (i == thirdBottomRow){
+                    board[i][j] = (j % 2 != 0 ? new Pawn(j, i, "white") : null);
+                }
+                else if (i == secondBottomRow){
+                    board[i][j] = (j % 2 == 0 ? new Pawn(j, i, "white") : null);
+                }
+                else if (i == firstBottomRow){
+                    board[i][j] = (j % 2 != 0 ? new Pawn(j, i, "white") : null);
+                }
             }
         }
+        return board;
     }
-    //TODO - everything here
-
 }
