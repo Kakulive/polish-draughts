@@ -6,6 +6,6 @@ public class Game {
         int boardSize = userHandler.getBoardSize();
 
         Pawn[][] board = Board.initBoard(boardSize);
-        System.out.println("YAY");
+        View.printBoard(board);
     }
 }
