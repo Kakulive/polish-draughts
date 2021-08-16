@@ -14,6 +14,8 @@ public class Game {
         Pawn[][] board =  initGame();
         View.printBoard(board);
         while (Objects.equals(gameChecker.whichPlayerWon(board), "nobody")){
+            Player activePlayer = getActivePlayer(player1, player2);
+            singleRound(board, activePlayer);
             //TODO gameplay
         }
     }
@@ -31,6 +33,21 @@ public class Game {
             player1.setActive(true);
             player1.setActive(false);
         }
+    }
+
+    private Player getActivePlayer (Player player1, Player player2){
+        if (player1.isActive()){
+            return player1;
+        } else {
+            return player2;
+        }
+    }
+
+    private void singleRound(Pawn[][] board, Player activePlayer){
+        View.clearScreen();
+        System.out.println(activePlayer.getName() + "'s turn:");
+        View.printBoard(board);
+        //TODO round logic
     }
 
 }
