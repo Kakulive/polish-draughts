@@ -3,6 +3,7 @@ package main_package;
 import java.util.Objects;
 
 public class View {
+
     public static void printBoard(Pawn[][] board) {
         String whiteEmptyField = ConsoleColors.WHITE_BACKGROUND + "   " + ConsoleColors.RESET;
         String blackEmptyField = ConsoleColors.BLACK_BACKGROUND + "   " + ConsoleColors.RESET;
@@ -69,4 +70,10 @@ public class View {
             System.out.println(rowString);
         }
     }
+
+    public static void clearScreen(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
 }

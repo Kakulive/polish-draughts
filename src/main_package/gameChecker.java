@@ -31,5 +31,9 @@ public class gameChecker {
         }
     }
 
+    public boolean isSpaceFree(Pawn[][] board, int x, int y){
+        return board[x][y] == null;
+    }
+
 
 }
