@@ -20,9 +20,23 @@ public class Game {
         }
     }
 
+    private void singleRound(Pawn[][] board, Player activePlayer){
+        View.clearScreen();
+        System.out.println(activePlayer.getName() + "'s turn:");
+        View.printBoard(board);
+        int[] pawnCoordinates = userHandler.choosePawn(board);
+        Pawn pawnToMove = board[pawnCoordinates[0]][pawnCoordinates[1]];
+        int[] moveCoordinates = userHandler.getMoveCoordinates(board);
+        pawnToMove.setCoordinateX(moveCoordinates[0]);
+        pawnToMove.setCoordinateY(moveCoordinates[1]);
+        View.clearScreen();
+        View.printBoard(board);
+        //TODO continue :)
+    }
+
     private Pawn[][] initGame(){
-        int boardSize = userHandler.getBoardSize(); // get board size from user
-        return Board.initBoard(boardSize); // initialize board
+        int boardSize = userHandler.getBoardSize();
+        return Board.initBoard(boardSize);
     }
 
     private void changeActivePlayer(Player player1, Player player2){
@@ -43,11 +57,6 @@ public class Game {
         }
     }
 
-    private void singleRound(Pawn[][] board, Player activePlayer){
-        View.clearScreen();
-        System.out.println(activePlayer.getName() + "'s turn:");
-        View.printBoard(board);
-        //TODO round logic
-    }
+
 
 }
