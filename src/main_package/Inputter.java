@@ -1,5 +1,8 @@
 package main_package;
+import java.util.HashMap;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Inputter {
@@ -23,5 +26,43 @@ public class Inputter {
         }
         return boardSize;
     }
+
+    public int[] choosePawn(Pawn[][] board){
+        System.out.println("Which pawn would you like to move next?: ");
+        String pawnToMove = "";
+        HashMap<String,int[]> validCoordinates = createCoordinatesMap(board);
+        while (!validCoordinates.containsKey(pawnToMove)){
+            pawnToMove = sc.nextLine();
+        }
+        return validCoordinates.get(pawnToMove);
+    }
+
+    public int[] getMoveCoordinates(Pawn[][] board){
+        System.out.println("Where would you like to place your next move?: ");
+        String nextMoveCoordinates = "";
+        HashMap<String,int[]> validCoordinates = createCoordinatesMap(board);
+        while (!validCoordinates.containsKey(nextMoveCoordinates)){
+            nextMoveCoordinates = sc.nextLine();
+        }
+        return validCoordinates.get(nextMoveCoordinates);
+    }
+
+    private HashMap<String, int[]> createCoordinatesMap(Pawn[][] board){
+        char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        String[] digits = new String[board.length];
+        for (int i = 0; i<board.length; i++){
+            digits[i] = String.valueOf(i);
+        }
+
+        HashMap<String, int[]> dictionary = new HashMap<String, int[]>();
+
+        for (int i = 0; i < board.length; i++){
+            for (int j = 0; j < board.length; j++){
+                dictionary.put(String.valueOf(alphabet[i])+digits[j], new int[]{i, j});
+            }
+        }
+        return dictionary;
+    }
+
 
 }

@@ -1,7 +1,7 @@
 package main_package;
 
 public class Player {
-    public int id;
+    public final int id;
     public int points;
     public boolean isActive;
     private final String name;
