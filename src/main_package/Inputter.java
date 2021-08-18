@@ -55,13 +55,13 @@ public class Inputter {
         }
 
         HashMap<String, int[]> dictionary = new HashMap<String, int[]>();
-        int counter = 0;
         for (int i = 0; i < board.length; i++){
             for (int j = 0; j < board.length; j++){
-                if (i % 2 == 0){
+                if (i % 2 == 0 && j % 2 == 0){
+                    dictionary.put(String.valueOf(alphabet[i])+digits[j], new int[]{i, j});
+                } else if (i % 2 == 1 && j % 2 == 1) {
                     dictionary.put(String.valueOf(alphabet[i])+digits[j], new int[]{i, j});
                 }
-                counter++;
             }
         }
         return dictionary;
