@@ -31,20 +31,20 @@ public class Inputter {
         System.out.println("Which pawn would you like to move next?: ");
         String pawnToMove = "";
         HashMap<String,int[]> validCoordinates = createCoordinatesMap(board);
-        while (!validCoordinates.containsKey(pawnToMove)){
+        while (!validCoordinates.containsKey(pawnToMove.toUpperCase())){
             pawnToMove = sc.nextLine();
         }
-        return validCoordinates.get(pawnToMove);
+        return validCoordinates.get(pawnToMove.toUpperCase());
     }
 
     public int[] getMoveCoordinates(Pawn[][] board){
         System.out.println("Where would you like to place your next move?: ");
         String nextMoveCoordinates = "";
         HashMap<String,int[]> validCoordinates = createCoordinatesMap(board);
-        while (!validCoordinates.containsKey(nextMoveCoordinates)){
+        while (!validCoordinates.containsKey(nextMoveCoordinates.toUpperCase())){
             nextMoveCoordinates = sc.nextLine();
         }
-        return validCoordinates.get(nextMoveCoordinates);
+        return validCoordinates.get(nextMoveCoordinates.toUpperCase());
     }
 
     private HashMap<String, int[]> createCoordinatesMap(Pawn[][] board){
