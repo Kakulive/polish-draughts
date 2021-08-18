@@ -9,7 +9,7 @@ public class gameChecker {
         for (int i = 0; i < board.length; i++){
             for (int j = 0; j < board.length; j++){
                 if (board[i][j] != null){
-                    if (Objects.equals(board[i][i].getColor(), color)){
+                    if (Objects.equals(board[i][j].getColor(), color)){
                         counter++;
                     }
                 }
@@ -35,5 +35,6 @@ public class gameChecker {
         return board[x][y] == null;
     }
 
-
+    //TODO validation of moves
+    //TODO validation of coordinates input
 }
