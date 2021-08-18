@@ -11,8 +11,19 @@ public class View {
         String bluePawnOnBlack = ConsoleColors.BLACK_BACKGROUND + ConsoleColors.BLUE_BOLD_BRIGHT + " O " + ConsoleColors.RESET;
         String redPawnOnWhite = ConsoleColors.WHITE_BACKGROUND + ConsoleColors.RED_BOLD_BRIGHT + " O " + ConsoleColors.RESET;
         String redPawnOnBlack = ConsoleColors.BLACK_BACKGROUND + ConsoleColors.RED_BOLD_BRIGHT + " O " + ConsoleColors.RESET;
+        char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
+        StringBuilder firstString = new StringBuilder();
+        firstString.append("   ");
+        for (int i = 0; i < board.length; i++){
+            firstString.append(" ").append(ConsoleColors.CYAN_BOLD_BRIGHT).append(i).append(ConsoleColors.RESET).append(" ");
+        }
+        System.out.println(firstString);
+
+
         for (int i = 0; i < board.length; i++) {
             StringBuilder rowString = new StringBuilder();
+            rowString.append(" ").append(ConsoleColors.CYAN_BOLD_BRIGHT).append(alphabet[i]).append(ConsoleColors.RESET).append(" ");
             for (int j = 0; j < board.length; j++){
 
                 if (i % 2 == 0){
