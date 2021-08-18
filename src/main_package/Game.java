@@ -26,9 +26,12 @@ public class Game {
         View.printBoard(board);
         int[] pawnCoordinates = userHandler.choosePawn(board);
         Pawn pawnToMove = board[pawnCoordinates[0]][pawnCoordinates[1]];
+        int pawnPreviousX = pawnToMove.getCoordinateX();
+        int pawnPreviousY = pawnToMove.getCoordinateY();
         int[] moveCoordinates = userHandler.getMoveCoordinates(board);
         pawnToMove.setCoordinateX(moveCoordinates[0]);
         pawnToMove.setCoordinateY(moveCoordinates[1]);
+        updateBoard(board, pawnPreviousX, pawnPreviousY, pawnToMove.getCoordinateX(), pawnToMove.getCoordinateY());
         View.clearScreen();
         View.printBoard(board);
         //TODO continue :)
@@ -55,6 +58,11 @@ public class Game {
         } else {
             return player2;
         }
+    }
+
+    private void updateBoard(Pawn[][] board, int oldX, int oldY, int newX, int newY){
+        board[newX][newY] = board[oldX][oldY];
+        board[oldX][oldY] = null;
     }
 
 
