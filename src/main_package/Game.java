@@ -12,7 +12,6 @@ public class Game {
 
     public void playGame() {
         Pawn[][] board =  initGame();
-        View.printBoard(board);
         while (Objects.equals(gameChecker.whichPlayerWon(board), "nobody")){
             Player activePlayer = getActivePlayer(player1, player2);
             singleRound(board, activePlayer);
@@ -33,7 +32,7 @@ public class Game {
         pawnToMove.setCoordinateY(moveCoordinates[1]);
         updateBoard(board, pawnPreviousX, pawnPreviousY, pawnToMove.getCoordinateX(), pawnToMove.getCoordinateY());
         View.clearScreen();
-        View.printBoard(board);
+        changeActivePlayer(player1, player2);
         //TODO continue :)
     }
 

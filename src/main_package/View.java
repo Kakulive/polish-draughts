@@ -16,7 +16,12 @@ public class View {
         StringBuilder firstString = new StringBuilder();
         firstString.append("   ");
         for (int i = 0; i < board.length; i++){
-            firstString.append(" ").append(ConsoleColors.CYAN_BOLD_BRIGHT).append(i).append(ConsoleColors.RESET).append(" ");
+            if (i < 10){
+                firstString.append(" ").append(ConsoleColors.CYAN_BOLD_BRIGHT).append(i).append(ConsoleColors.RESET).append(" ");
+            } else {
+                firstString.append(" ").append(ConsoleColors.CYAN_BOLD_BRIGHT).append(i).append(ConsoleColors.RESET);
+            }
+
         }
         System.out.println(firstString);
 
