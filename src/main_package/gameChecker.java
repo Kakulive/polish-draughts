@@ -35,6 +35,10 @@ public class gameChecker {
         return board[x][y] == null;
     }
 
+    public boolean verifyCorrectPlayersPawn(Pawn[][] board, int x, int y, Player player){
+        return Objects.equals(board[x][y].getColor(), player.getColor());
+    }
+
     //TODO validation of moves
     //TODO validation of coordinates input
 }

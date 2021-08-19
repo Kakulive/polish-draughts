@@ -5,12 +5,14 @@ public class Player {
     public int points;
     public boolean isActive;
     private final String name;
+    private final String color;
 
-    public Player(int id, int points, boolean isActive, String name){
+        public Player(int id, int points, boolean isActive, String name, String color){
         this.id = id;
         this.points = points;
         this.isActive = isActive;
         this.name = name;
+        this.color = color;
     }
 
     public boolean isActive() {
@@ -35,5 +37,9 @@ public class Player {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public String getColor() {
+        return color;
     }
 }
