@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Inputter {
     final Scanner sc = new Scanner(System.in);
+    final gameChecker validator = new gameChecker();
 
     public int getBoardSize(){
         System.out.println("Choose your board size (10-20): ");
@@ -14,6 +15,7 @@ public class Inputter {
         while (boardSize < 10 || boardSize > 20) {
             try {
                 int userInput = sc.nextInt();
+                sc.nextLine();
                 if (userInput < 10 || userInput > 20 ) {
                     System.out.println("Choose a valid board size between 10 and 20!");
                 } else {
@@ -29,9 +31,10 @@ public class Inputter {
 
     public int[] choosePawn(Pawn[][] board){
         System.out.println("Which pawn would you like to move next?: ");
-        String pawnToMove = "";
         HashMap<String,int[]> validCoordinates = createCoordinatesMap(board);
+        String pawnToMove = sc.nextLine();
         while (!validCoordinates.containsKey(pawnToMove.toUpperCase())){
+            System.out.println("Apologies, but I don't think this coordinate is a valid one... Choose again! ");
             pawnToMove = sc.nextLine();
         }
         return validCoordinates.get(pawnToMove.toUpperCase());
@@ -39,9 +42,12 @@ public class Inputter {
 
     public int[] getMoveCoordinates(Pawn[][] board){
         System.out.println("Where would you like to place your next move?: ");
-        String nextMoveCoordinates = "";
+        String nextMoveCoordinates = sc.nextLine();
         HashMap<String,int[]> validCoordinates = createCoordinatesMap(board);
-        while (!validCoordinates.containsKey(nextMoveCoordinates.toUpperCase())){
+        while (!validCoordinates.containsKey(nextMoveCoordinates.toUpperCase()) || !validator.isSpaceFree(board,
+                validCoordinates.get(nextMoveCoordinates.toUpperCase())[0],
+                validCoordinates.get(nextMoveCoordinates.toUpperCase())[1])){
+            System.out.println("Apologies, but I don't think this coordinate is a valid one... Choose again! ");
             nextMoveCoordinates = sc.nextLine();
         }
         return validCoordinates.get(nextMoveCoordinates.toUpperCase());
