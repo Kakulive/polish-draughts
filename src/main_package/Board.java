@@ -11,29 +11,29 @@ public class Board {
         for (int i = 0; i < board.length; i++){
             for (int j = 0; j < board.length; j++){
                 if (i == 0){
-                    board[i][j] = (j % 2 == 0 ? new Pawn(j, i, "blue") : null);
+                    board[i][j] = (j % 2 == 0 ? new Pawn(i, j, "blue") : null);
                 }
                 else if (i == 1){
-                    board[i][j] = (j % 2 != 0 ? new Pawn(j, i, "blue") : null);
+                    board[i][j] = (j % 2 != 0 ? new Pawn(i, j, "blue") : null);
                 }
                 else if (i == 2){
-                    board[i][j] = (j % 2 == 0 ? new Pawn(j, i, "blue") : null);
+                    board[i][j] = (j % 2 == 0 ? new Pawn(i, j, "blue") : null);
                 }
                 else if (i == 3){
-                    board[i][j] = (j % 2 != 0 ? new Pawn(j, i, "blue") : null);
+                    board[i][j] = (j % 2 != 0 ? new Pawn(i, j, "blue") : null);
                 }
 
                 else if (i == fourthBottomRow){
-                    board[i][j] = (j % 2 == 0 ? new Pawn(j, i, "red") : null);
+                    board[i][j] = (j % 2 == 0 ? new Pawn(i, j, "red") : null);
                 }
                 else if (i == thirdBottomRow){
-                    board[i][j] = (j % 2 != 0 ? new Pawn(j, i, "red") : null);
+                    board[i][j] = (j % 2 != 0 ? new Pawn(i, j, "red") : null);
                 }
                 else if (i == secondBottomRow){
-                    board[i][j] = (j % 2 == 0 ? new Pawn(j, i, "red") : null);
+                    board[i][j] = (j % 2 == 0 ? new Pawn(i, j, "red") : null);
                 }
                 else if (i == firstBottomRow){
-                    board[i][j] = (j % 2 != 0 ? new Pawn(j, i, "red") : null);
+                    board[i][j] = (j % 2 != 0 ? new Pawn(i, j, "red") : null);
                 }
             }
         }

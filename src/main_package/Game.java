@@ -5,14 +5,14 @@ import java.util.Objects;
 public class Game {
 
     Inputter userHandler = new Inputter();
-    gameChecker gameChecker = new gameChecker();
+    gameChecker validator = new gameChecker();
 
-    Player player1 = new Player(1,0, true,"BLUE Player");
-    Player player2 = new Player(2,0, false,"RED Player");
+    Player player1 = new Player(1,0, true,"BLUE Player", "blue");
+    Player player2 = new Player(2,0, false,"RED Player", "red");
 
     public void playGame() {
         Pawn[][] board =  initGame();
-        while (Objects.equals(gameChecker.whichPlayerWon(board), "nobody")){
+        while (Objects.equals(validator.whichPlayerWon(board), "nobody")){
             Player activePlayer = getActivePlayer(player1, player2);
             singleRound(board, activePlayer);
             //TODO gameplay
@@ -21,10 +21,16 @@ public class Game {
 
     private void singleRound(Pawn[][] board, Player activePlayer){
         View.clearScreen();
-        System.out.println(activePlayer.getName() + "'s turn:");
+        System.out.println(ConsoleColors.GREEN_BRIGHT + activePlayer.getName() + "'s turn:" + ConsoleColors.RESET);
         View.printBoard(board);
         int[] pawnCoordinates = userHandler.choosePawn(board);
         Pawn pawnToMove = board[pawnCoordinates[0]][pawnCoordinates[1]];
+        while (!validator.verifyCorrectPlayersPawn(board,pawnToMove.getCoordinateX(), pawnToMove.getCoordinateY(),activePlayer)){
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "That's not your Pawn you dirty cheater! " +
+                    "Choose the correct one!" + ConsoleColors.RESET);
+            pawnCoordinates = userHandler.choosePawn(board);
+            pawnToMove = board[pawnCoordinates[0]][pawnCoordinates[1]];
+        }
         int pawnPreviousX = pawnToMove.getCoordinateX();
         int pawnPreviousY = pawnToMove.getCoordinateY();
         int[] moveCoordinates = userHandler.getMoveCoordinates(board);
@@ -47,7 +53,7 @@ public class Game {
             player2.setActive(true);
         } else {
             player1.setActive(true);
-            player1.setActive(false);
+            player2.setActive(false);
         }
     }
 
