@@ -1,15 +1,16 @@
 package main_package;
 
+import java.security.KeyStore;
 import java.util.Objects;
 
 public class gameChecker {
 
     public int countPawns(Pawn[][] board, String color){
         int counter = 0;
-        for (int i = 0; i < board.length; i++){
-            for (int j = 0; j < board.length; j++){
-                if (board[i][j] != null){
-                    if (Objects.equals(board[i][j].getColor(), color)){
+        for (Pawn[] pawns : board) {
+            for (int j = 0; j < board.length; j++) {
+                if (pawns[j] != null) {
+                    if (Objects.equals(pawns[j].getColor(), color)) {
                         counter++;
                     }
                 }
@@ -39,6 +40,10 @@ public class gameChecker {
         return Objects.equals(board[x][y].getColor(), player.getColor());
     }
 
-    //TODO validation of moves
-    //TODO validation of coordinates input
+
+    public boolean isMoveValid(Pawn[][] board, int oldX, int oldY, int newX, int newY){
+        return (Math.abs(newX-oldX) < 2 && Math.abs(newY-oldY) < 2);
+    }
+
+    //TODO validation of pawn selection
 }
